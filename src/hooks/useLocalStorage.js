@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export function useLocalStorage(key) {
-    console.log(key)
+  
   // Initialize state with a function to avoid running localStorage logic on every render
   const [value, setValue] = useState(() => {
     // only run once when the component is mounted
@@ -10,7 +10,6 @@ export function useLocalStorage(key) {
     
     return saved ? JSON.parse(saved) : []
   })
-  console.log(value)
   // Effect runs whenever key or value changes
   useEffect(() => {
     // Save the current value to localStorage

@@ -5,10 +5,11 @@ import PriorityBadge from '@/components/shared/PriorityBadge'
 import TaskHistory from '@/components/task/TaskHistory'
 
 export default function TaskItem({ task }) {
-  const { toggleTask, deleteTask, updateTask, selectedTaskId, setSelectedTaskId } = useTasks()
+  const { toggleTask, deleteTask, updateTask } = useTasks()
   const [isEditing, setIsEditing] = useState(false)
   const [editText, setEditText] = useState(task.text)
   const [editPriority, setEditPriority] = useState(task.priority)
+  const [showHistory, setShowHistory] = useState(false)
 
   const handleSave = () => {
     if (!editText.trim()) return
@@ -23,10 +24,7 @@ export default function TaskItem({ task }) {
   }
 
   const toggleHistory = () => {
-    // If this task's history is currently shown (selectedTaskId matches current task)
-    // then hide it (set to null)
-    // otherwise show this task's history (set to current task.id)
-    setSelectedTaskId(selectedTaskId === task.id ? null : task.id)
+    setShowHistory(!showHistory)
   }
 
   return (
@@ -106,7 +104,7 @@ export default function TaskItem({ task }) {
           </button>
         </div>
       </div>
-      {selectedTaskId === task.id && <TaskHistory />}
+      {showHistory && <TaskHistory taskId={task.id} />}
     </li>
   )
 } 

@@ -13,10 +13,10 @@ export function TaskProvider({ children }) {
   // UI state
   const [filter, setFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedTaskId, setSelectedTaskId] = useState(null)
 
   // Filter tasks based on search term and filter type
   const filteredTasks = useMemo(() => {
+    console.log('filteredTasks is re-rendered')
     return tasks.filter(task => {
       if (searchTerm) {
         return task.text.toLowerCase().includes(searchTerm.toLowerCase())
@@ -87,8 +87,6 @@ export function TaskProvider({ children }) {
     updateTask,
     toggleTask,
     deleteTask,
-    selectedTaskId,
-    setSelectedTaskId
   }
 
   // Provide context to child components

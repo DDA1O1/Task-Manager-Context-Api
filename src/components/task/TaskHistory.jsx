@@ -4,12 +4,12 @@
  */
 import { useTasks } from '@/context/TaskContext'
 
-export default function TaskHistory() {
-  const { taskHistory, selectedTaskId } = useTasks()
+export default function TaskHistory({ taskId }) {
+  const { taskHistory } = useTasks()
   
-  // Filter records for selected task
+  // Filter records for this task
   const history = taskHistory
-    .filter(record => record.taskId === selectedTaskId)
+    .filter(record => record.taskId === taskId)
     .reverse()
 
   return (
