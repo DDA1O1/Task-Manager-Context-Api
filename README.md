@@ -1,10 +1,11 @@
 
-
+```
 App -> TaskForm -> TaskItem -> TaskHistory
         ↓
      TaskList
         ↓
     Statistics
+```
 
 ## State Management with Context API
 
